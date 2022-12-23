@@ -2,7 +2,9 @@ package me.nightletter.javareflectcommoncode.common;
 
 import me.nightletter.javareflectcommoncode.common.code.CommonCodeAnnotation;
 import me.nightletter.javareflectcommoncode.common.code.MusicGenreCode;
+import me.nightletter.javareflectcommoncode.common.code.PaymentTypeCode;
 import me.nightletter.javareflectcommoncode.common.dto.CodeResponse;
+import me.nightletter.javareflectcommoncode.common.dto.CodesResponse;
 import me.nightletter.javareflectcommoncode.common.service.CommonService;
 import me.nightletter.javareflectcommoncode.common.service.ImplCommonService;
 import org.junit.jupiter.api.Assertions;
@@ -27,6 +29,7 @@ class CommonServiceTest {
 
     @Test
     void commonCodeTest() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+
         List<CodeResponse> commonCode = commonService.findCommonCode(exParam);
         int length = MusicGenreCode.values().length;
 
@@ -35,14 +38,15 @@ class CommonServiceTest {
 
     @Test
     void commonCodesTest() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
-        System.out.println(commonService.findCommonCodes());
-    }
 
-    @Test
-    void test () {
-        Reflections reflections = new Reflections("me.nightletter.javareflectcommoncode.common.code");
-        Set<Class<?>> typesAnnotatedWith = reflections.getTypesAnnotatedWith(CommonCodeAnnotation.class);
+        int responseCodeSize = 0;
 
-        typesAnnotatedWith.forEach(item -> System.out.println(item.getSimpleName()));
+        for (CodesResponse commonCode : commonService.findCommonCodes()) {
+            responseCodeSize += commonCode.getCodes().size();
+        }
+
+        int length = MusicGenreCode.values().length + PaymentTypeCode.values().length;
+
+        Assertions.assertEquals(responseCodeSize, length);
     }
 }

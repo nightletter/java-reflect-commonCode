@@ -17,5 +17,6 @@ public class JavaReflectCommonCodeApplication {
     @Bean
     public CommonService commonService() {
         return new AnnoCommonService();
+//        return new ImplCommonService();
     }
 }

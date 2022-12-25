@@ -10,8 +10,8 @@ import java.util.List;
 @Service
 public interface CommonService {
 
-    final String PREFIX = "me.nightletter.javareflectcommoncode.common.code.";
+    String PREFIX = "me.nightletter.javareflectcommoncode.common.code.";
 
-    public List<CodeResponse> findCommonCode(String codeGroupNm) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException;
-    public List<CodesResponse> findCommonCodes() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException;
+    List<CodeResponse> findCommonCode(String codeGroupNm) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, ClassNotFoundException;
+    List<CodesResponse> findCommonCodes() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException;
 }

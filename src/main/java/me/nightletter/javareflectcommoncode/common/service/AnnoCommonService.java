@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 
 public class AnnoCommonService implements CommonService{
 
-    // TODO: 2022/12/23  이거 구현하기
     @Override
     public List<CodeResponse> findCommonCode(String codeGroupNm) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
         Reflections reflections = new Reflections(PREFIX);
 
         List<Class<?>> findOne = reflections.getTypesAnnotatedWith(CommonCodeAnnotation.class).stream()

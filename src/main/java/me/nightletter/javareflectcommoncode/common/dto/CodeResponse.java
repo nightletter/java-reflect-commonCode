@@ -2,6 +2,8 @@ package me.nightletter.javareflectcommoncode.common.dto;
 
 import lombok.Data;
 
+import java.lang.reflect.Method;
+
 @Data
 public class CodeResponse  {
 
